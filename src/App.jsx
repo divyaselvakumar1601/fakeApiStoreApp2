@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import ProductsPage from "./pages/ProductsPage";
 import CartPage from "./pages/CartPage";
 import "./styles/Navbar.css"; 
@@ -37,7 +37,6 @@ const App = () => {
       <nav className="navbar">
         <Link to="/" className="nav-link">Products</Link> 
         <Link to="/cart" className="cart-button">🛒 Cart ({cart.length})</Link>
-        <BackButton /> {/* Back button added here */}
       </nav>
       
       <Routes>
@@ -45,14 +44,6 @@ const App = () => {
         <Route path="/cart" element={<CartPage cart={cart} updateQuantity={updateQuantity} removeFromCart={removeFromCart} />} />
       </Routes>
     </Router>
-  );
-};
-
-// Back Button Component
-const BackButton = () => {
-  const navigate = useNavigate();
-  return (
-    <button className="back-button" onClick={() => navigate(-1)}>⬅ Back</button>
   );
 };
 
